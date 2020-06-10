@@ -20,8 +20,8 @@ class Triangle
 end
 
 def valid_triangle
-  triangle = [(a + b > c), (a + c > b), (b + c > a)]
-  [a, b, c].each do |side|
+  triangle = [(x + y > z), (x + z > y), (y + z > x)]
+  [x, y, z].each do |side|
   triangle << false if side <= 0 
   raise TriangleError if triangle.include?(false)
   end
