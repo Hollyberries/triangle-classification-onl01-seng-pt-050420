@@ -1,34 +1,31 @@
 class Triangle
-  
-  attr_reader :x, :y, :z
-  
-  
-  def initialize(x, y, z)
-    @x = x
-    @y = y
-    @z = z
+  attr_reader :a, :b, :c
+  def initialize(a, b, c)
+    @a = a
+    @b = b
+    @c = c
   end
-  
+
   def kind
-    if x == y && y == z
+    validate_triangle
+    if a == b && b == c
       :equilateral
-      elsif x == y || y == z || x == z
+    elsif a == b || b == c || a == c
       :isosceles
     else
       :scalene
+    end
   end
-end
 
-def valid_triangle
-  triangle = [(x + y > z), (x + z > y), (y + z > x)]
-  [x, y, z].each do |side|
-  triangle << false if side <= 0 
-  raise TriangleError if triangle.include?(false)
+  def validate_triangle
+    real_triangle = [(a + b > c), (a + c > b), (b + c > a)]
+    [a, b, c].each do |side|
+      real_triangle << false if side <= 0 
+    raise TriangleError if real_triangle.include?(false)
+    end
   end
-end
 
-class TriangleError < StandardError
-end
+  class TriangleError < StandardError
+  end
 
-  
 end
