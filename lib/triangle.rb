@@ -10,7 +10,6 @@ class Triangle
   end
   
   def kind
-    valid_triangle
     if x == y && y == z
       :equilateral
       elsif x == y || y == z || x == z
@@ -21,10 +20,10 @@ class Triangle
 end
 
 def valid_triangle
-  real_triangle = [(x + y > z), (x + z > y), (y + z > x)]
+  triangle = [(x + y > z), (x + z > y), (y + z > x)]
   [x, y, z].each do |side|
-  real_triangle << false if side <= 0 
-  raise TriangleError if real_triangle.include?(false)
+  triangle << false if side <= 0 
+  raise TriangleError if triangle.include?(false)
   end
 end
 
