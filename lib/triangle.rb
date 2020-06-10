@@ -22,7 +22,7 @@ end
 def valid_triangle
   real_triangle = [(x + y > z), (x + z > y), (y + z > x)]
   [x, y, z].each do |side|
-  triangle << false if side <= 0 
+  real_triangle << false if side <= 0 
   raise TriangleError if triangle.include?(false)
   end
 end
